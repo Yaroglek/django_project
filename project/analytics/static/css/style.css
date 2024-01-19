@@ -1,0 +1,94 @@
+body {
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid #214BB2;
+}
+
+.logo img {
+    max-width: 70px;
+}
+
+header h1 {
+    margin-left: 50px;
+}
+
+.main-nav {
+    margin-top: 30px;
+    width: 200px;
+    text-align: right;
+    position: fixed;
+    font-size: 18px;
+}
+
+.main-nav h3 {
+    font-size: 1.1em;
+}
+
+.site-navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-navigation-item {
+    color: #000;
+    padding: 16px;
+    text-decoration: none;
+    text-align: left;
+    display: flex;
+}
+
+.site-navigation-item a{
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.site-navigation-item a:hover {
+    color: #214BB2;
+    text-decoration: underline #214BB2;
+    text-underline-offset: 6px;
+}
+
+.icon {
+    margin-top: 8px;
+}
+
+main {
+    flex: 1;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.hero {
+    margin-left: 240px;
+}
+
+.article {
+    margin-left: 240px;
+}
+
+.demand-img {
+    max-width: 300px;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    text-align: center;
+    height: 100%;
+}

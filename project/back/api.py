@@ -1,6 +1,7 @@
 import json
 import locale
 import re
+import time
 import requests
 from datetime import datetime
 import xml.etree.ElementTree as ET
@@ -40,8 +41,42 @@ def get_latest_vacancies():
 
 # API Центробанка
 def get_currency_in_rur(currency: str, published_at: str):
-    date = datetime.fromisoformat(published_at)
-    date = f"01/0{date.month}/{date.year}"
+    if currency == "RUR":
+        return 1.0
+    if currency == "GEL":
+        return 30.0
+
+    matcher = re.match(r"^(\d{4})-(\d{2})", published_at)
+    year = matcher.group(1)
+    month = matcher.group(2)
+
+    if year <= "2016" and month <= "06" and currency == "BYN":
+        currency = "BYR"
+    if (year == "2016" and month > "06" or year >= "2017") and currency == "BYR":
+        currency = "BYN"
+
+    if year not in currencies_by_date:
+        currencies_by_date[year] = {
+            month: {
+                currency: get_multiplier(currency, month, year)
+            }
+        }
+
+    if month not in currencies_by_date[year]:
+        currencies_by_date[year][month] = {
+            currency: get_multiplier(currency, month, year)
+        }
+
+    if currency not in currencies_by_date[year][month]:
+        currencies_by_date[year][month][currency] = get_multiplier(currency, month, year)
+
+    return currencies_by_date[year][month][currency]
+
+
+def get_multiplier(currency, month, year):
+    time.sleep(0.3)
+    print(currency, month, year)
+    date = f"01/{month}/{year}"
     url = f"http://www.cbr.ru/scripts/XML_daily.asp?date_req={date}"
     response = requests.get(url)
 
@@ -51,4 +86,8 @@ def get_currency_in_rur(currency: str, published_at: str):
 
         if valute is not None:
             locale.setlocale(locale.LC_NUMERIC, 'ru_RU.UTF-8')
-            return locale.atof(valute.find('Value').text)
+            multiplier = locale.atof(valute.find('Value').text)
+            return multiplier
+
+
+currencies_by_date = {}

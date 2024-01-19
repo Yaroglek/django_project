@@ -14,6 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
 from django.contrib import admin
 from django.urls import path
 from analytics import views
@@ -25,4 +27,4 @@ urlpatterns = [
     path('geography/', views.geography),
     path('skills/', views.skills),
     path('latest_vacancies', views.latest_vacancies),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Image
 from back.api import get_latest_vacancies
 
 
@@ -7,7 +8,8 @@ def main(request):
 
 
 def demand(request):
-    return render(request, "demand.html")
+    img = Image.objects.all()[0]
+    return render(request, "demand.html", {"graphic": img})
 
 
 def geography(request):
