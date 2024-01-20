@@ -3,7 +3,7 @@
     text-align: center;
 }
 
-.demand-table {
+.geography-table {
 	width: 100%;
 	margin-bottom: 20px;
 	border: 1px solid #dddddd;
@@ -14,18 +14,18 @@ caption {
     font-size: 18px;
 }
 
-.demand-table th {
+.geography-table th {
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
-.demand-table td {
+.geography-table td {
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
 
-.demand-content {
+.geography-content {
     padding: 0px 15px 20px 15px;
     margin-bottom: 20px;
     border: 2px solid #587BEC;

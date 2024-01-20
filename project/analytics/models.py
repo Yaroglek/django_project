@@ -12,7 +12,7 @@ class Image(models.Model):
 
 class DemandContent(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = models.JSONField(null=True)
     load_dttm = models.DateTimeField(auto_now_add=True)
     image = models.OneToOneField(Image, on_delete=models.CASCADE, null=True)
 
@@ -22,7 +22,7 @@ class DemandContent(models.Model):
 
 class GeographyContent(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = models.JSONField(null=True)
     load_dttm = models.DateTimeField(auto_now_add=True)
     image = models.OneToOneField(Image, on_delete=models.CASCADE, null=True)
 
@@ -32,7 +32,7 @@ class GeographyContent(models.Model):
 
 class SkillsContent(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = models.JSONField(null=True)
     load_dttm = models.DateTimeField(auto_now_add=True)
     image = models.OneToOneField(Image, on_delete=models.CASCADE, null=True)
 

@@ -1,7 +1,6 @@
 import json
 import locale
 import re
-import time
 import requests
 from datetime import datetime
 import xml.etree.ElementTree as ET
@@ -16,8 +15,8 @@ def get_latest_vacancies():
     if response.status_code == 200:
         response = json.loads(response.text)['items']
         vacancies = list(sorted(response, key=lambda x: datetime.fromisoformat(x["published_at"]), reverse=True))[:10]
-        # Получить только необходимые поля у каждой вакансии
 
+        # Получить только необходимые поля у каждой вакансии
         for vacancy in vacancies:
             id = vacancy["id"]
             vacancy_url = f"https://api.hh.ru/vacancies/{id}"
@@ -28,15 +27,41 @@ def get_latest_vacancies():
                 fields_needed = {
                     "name": answer["name"],
                     "description": re.sub("<.*?>", "", answer["description"]),
-                    "key_skills": [i["name"] for i in answer["key_skills"]],
+                    "key_skills": get_skills_from_vac([i["name"] for i in answer["key_skills"]]),
                     "company": answer["employer"]["name"],
-                    "salary": answer["salary"],
+                    "salary": get_salary_from_hh_vacancy(answer["salary"], answer["published_at"]),
                     "area_name": answer["area"]["name"],
-                    "published_at": answer["published_at"]
+                    "published_at": get_date_from_vac(answer["published_at"]),
+                    "url": answer["alternate_url"]
                 }
                 latest_vacancies.append(fields_needed)
 
     return latest_vacancies
+
+
+def get_salary_from_hh_vacancy(salary: dict, published_at: str) -> str:
+    if salary is None:
+        return "не указана"
+
+    salary_from = salary["from"] if salary["from"] is not None else 0
+    salary_to = salary["to"] if salary["to"] is not None else 0
+    salary_currency = salary["currency"] if salary["currency"] is not None else "RUR"
+
+    avg_salary = int((salary_from + salary_to) / 2 * get_currency_in_rur(salary_currency, published_at))
+    return f"{str(avg_salary)} {salary_currency}"
+
+
+def get_date_from_vac(published_at: str) -> str:
+    date = datetime.fromisoformat(published_at)
+    return f"{date.day}.{date.month}.{date.year}"
+
+
+def get_skills_from_vac(skills: list) -> str:
+    if len(skills) == 0:
+        return "не указаны"
+
+    skills = ", ".join(skills)
+    return skills
 
 
 # API Центробанка
@@ -72,7 +97,6 @@ def get_currency_in_rur(currency: str, published_at: str):
 
 
 def get_multiplier(currency, month, year):
-    time.sleep
     print(currency, month, year)
     date = f"01/{month}/{year}"
     url = f"http://www.cbr.ru/scripts/XML_daily.asp?date_req={date}"

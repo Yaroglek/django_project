@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <title>C/C++</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/geography.css' %}">
 </head>
-<body>
+<body class="grid">
 <header class="page-header">
     <p class="logo">
         <img src="{% static 'images/logo.svg' %}">
@@ -46,7 +47,23 @@
     </section>
     <article class="article">
         <div class="article-content">
-
+            {% for geography in all_geography %}
+                <div class="geography-content">
+                    <img class="geography-img" src="{{ geography.image.image.url }}">
+                    <table class="geography-table">
+                        <tr>
+                            {% for key in geography.content.keys %}
+                                <th>{{ key }}</th>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% for value in geography.content.values %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
         </div>
     </article>
 </main>

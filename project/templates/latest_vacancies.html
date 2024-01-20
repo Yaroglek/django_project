@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>C/C++</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/latest_vacancies.css' %}">
 </head>
 <body>
 <header class="page-header">
@@ -46,15 +47,17 @@
     </section>
     <article class="article">
         <div class="article-content">
-            <ul>
+            <ul class="vacancy-list">
                 {% for vacancy in vacancies %}
-                    <li>
-                        <h2>{{ vacancy.name }}</h2>
-                        <p>{{ vacancy.description }}</p>
-                        <p>Ключевые навыки: {{ vacancy.key_skills }}</p>
-                        <p>Зарплата: {{ vacancy.salary.from }} {{ vacancy.salary.currency }}</p>
-                        <p>Местоположение: {{ vacancy.area_name }}</p>
-                        <p>Опубликовано: {{ vacancy.published_at }}</p>
+                    <li class="vacancy-list-item">
+                        <h3>{{ vacancy.name }}</h3>
+                        <p><strong>Описание:</strong> {{ vacancy.description }}</p>
+                        <p><strong>Ключевые навыки:</strong> {{ vacancy.key_skills }}</p>
+                        <p><strong>Компания:</strong> {{ vacancy.company }}</p>
+                        <p><strong>Зарплата:</strong> {{ vacancy.salary }}</p>
+                        <p><strong>Местоположение:</strong> {{ vacancy.area_name }}</p>
+                        <p><strong>Опубликовано:</strong> {{ vacancy.published_at }}</p>
+                        <a href="{{ vacancy.url }}"><strong>Ссылка на вакансию</strong></a>
                     </li>
                 {% endfor %}
             </ul>

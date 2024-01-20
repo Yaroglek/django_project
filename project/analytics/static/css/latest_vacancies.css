@@ -1,0 +1,19 @@
+.vacancy-list {
+    list-style-type: none;
+}
+
+.vacancy-list-item {
+    padding: 0 15px 15px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #587BEC;
+    border-radius: 15px;
+}
+
+.vacancy-list-item a {
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #6385F1;
+    border-radius: 10px;
+    color: #6385F1;
+    text-decoration: none;
+}
+

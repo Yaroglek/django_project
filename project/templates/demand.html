@@ -47,20 +47,23 @@
     </section>
     <article class="article">
         <div class="article-content">
-            <table class="demand-table">
-                <caption>Динамика уровня зарплат по годам</caption>
-                <tr>
-                    {% for year in dict.keys %}
-                        <th>{{ year }}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for salary in dict.values %}
-                        <td>{{ salary }}</td>
-                    {% endfor %}
-                </tr>
-            </table>
-            <img class="demand-img" src="{{ graphic.image.url }}">
+            {% for demand in all_demands %}
+                <div class="demand-content">
+                    <img class="demand-img" src="{{ demand.image.image.url }}">
+                    <table class="demand-table">
+                        <tr>
+                            {% for key in demand.content.keys %}
+                                <th>{{ key }}</th>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% for value in demand.content.values %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+            {% endfor %}
         </div>
     </article>
 </main>
