@@ -1,8 +1,9 @@
 import json
 import locale
 import re
+
 import requests
-from datetime import datetime
+import dateutil.parser
 import xml.etree.ElementTree as ET
 
 
@@ -14,7 +15,7 @@ def get_latest_vacancies():
 
     if response.status_code == 200:
         response = json.loads(response.text)['items']
-        vacancies = list(sorted(response, key=lambda x: datetime.fromisoformat(x["published_at"]), reverse=True))[:10]
+        vacancies = list(sorted(response, key=lambda x: dateutil.parser.isoparse(x["published_at"]), reverse=True))[:10]
 
         # Получить только необходимые поля у каждой вакансии
         for vacancy in vacancies:
@@ -52,7 +53,7 @@ def get_salary_from_hh_vacancy(salary: dict, published_at: str) -> str:
 
 
 def get_date_from_vac(published_at: str) -> str:
-    date = datetime.fromisoformat(published_at)
+    date = dateutil.parser.isoparse(published_at)
     return f"{date.day}.{date.month}.{date.year}"
 
 
@@ -69,9 +70,9 @@ def get_currency_in_rur(currency: str, published_at: str):
     if currency == "RUR":
         return 1.0
 
-    matcher = re.match(r"^(\d{4})-(\d{2})", published_at)
-    year = matcher.group(1)
-    month = matcher.group(2)
+    dttm = dateutil.parser.isoparse(published_at)
+    year = str(dttm.year)
+    month = str(dttm.month)
 
     if year <= "2016" and month <= "06" and currency == "BYN":
         currency = "BYR"
