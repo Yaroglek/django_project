@@ -1,0 +1,21 @@
+.article-content {
+    float: center;
+    text-align: center;
+}
+
+.demand-table {
+	width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid #dddddd;
+	border-collapse: collapse;
+}
+.demand-table th {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #dddddd;
+}
+.demand-table td {
+	border: 1px solid #dddddd;
+	padding: 5px;
+}

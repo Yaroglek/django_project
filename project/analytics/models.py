@@ -14,6 +14,7 @@ class DemandContent(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     load_dttm = models.DateTimeField(auto_now_add=True)
+    image = models.OneToOneField(Image, on_delete=models.CASCADE, null=True)
 
     def str(self):
         return self.title
@@ -23,6 +24,7 @@ class GeographyContent(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     load_dttm = models.DateTimeField(auto_now_add=True)
+    image = models.OneToOneField(Image, on_delete=models.CASCADE, null=True)
 
     def str(self):
         return self.title
@@ -32,6 +34,7 @@ class SkillsContent(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     load_dttm = models.DateTimeField(auto_now_add=True)
+    image = models.OneToOneField(Image, on_delete=models.CASCADE, null=True)
 
     def str(self):
         return self.title

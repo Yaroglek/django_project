@@ -2,15 +2,13 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     display: flex;
-    min-height: 100vh;
-    display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 header {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 9%;
+    margin-right: 9%;
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -25,21 +23,25 @@ header h1 {
     margin-left: 50px;
 }
 
-.main-nav {
+main {
+    flex: 1;
+    margin-left: 9%;
+    margin-right: 9%;
+}
+
+aside {
     margin-top: 30px;
-    width: 200px;
-    text-align: right;
+    text-align: left;
     position: fixed;
     font-size: 18px;
 }
 
-.main-nav h3 {
+aside h3 {
     font-size: 1.1em;
 }
 
 .site-navigation {
     list-style-type: none;
-    margin: 0;
     padding: 0;
 }
 
@@ -65,25 +67,16 @@ header h1 {
 }
 
 .icon {
-    margin-top: 8px;
-}
-
-main {
-    flex: 1;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-top: 6px;
 }
 
 .hero {
-    margin-left: 240px;
+    margin-left: 250px;
 }
 
 .article {
-    margin-left: 240px;
-}
-
-.demand-img {
-    max-width: 300px;
+    margin-left: 250px;
+    border-bottom: solid #214BB2;
 }
 
 footer {

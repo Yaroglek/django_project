@@ -43,8 +43,6 @@ def get_latest_vacancies():
 def get_currency_in_rur(currency: str, published_at: str):
     if currency == "RUR":
         return 1.0
-    if currency == "GEL":
-        return 30.0
 
     matcher = re.match(r"^(\d{4})-(\d{2})", published_at)
     year = matcher.group(1)
@@ -74,7 +72,7 @@ def get_currency_in_rur(currency: str, published_at: str):
 
 
 def get_multiplier(currency, month, year):
-    time.sleep(0.3)
+    time.sleep
     print(currency, month, year)
     date = f"01/{month}/{year}"
     url = f"http://www.cbr.ru/scripts/XML_daily.asp?date_req={date}"
@@ -86,7 +84,7 @@ def get_multiplier(currency, month, year):
 
         if valute is not None:
             locale.setlocale(locale.LC_NUMERIC, 'ru_RU.UTF-8')
-            multiplier = locale.atof(valute.find('Value').text)
+            multiplier = locale.atof(valute.find('VunitRate').text)
             return multiplier
 
 

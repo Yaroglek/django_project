@@ -21,10 +21,10 @@ from django.urls import path
 from analytics import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.main),
-    path('demand/', views.demand),
-    path('geography/', views.geography),
-    path('skills/', views.skills),
-    path('latest_vacancies', views.latest_vacancies),
+    path("admin/", admin.site.urls),
+    path('', views.main, name="main"),
+    path("demand/", views.demand, name="demand"),
+    path("geography/", views.geography, name="geography"),
+    path("skills/", views.skills, name="skills"),
+    path("latest_vacancies/", views.latest_vacancies, name="latest_vacancies"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <title>C/C++</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/demand.css' %}">
 </head>
-<body>
+<body class="grid">
 <header class="page-header">
     <p class="logo">
         <img src="{% static 'images/logo.svg' %}">
@@ -14,39 +15,51 @@
     <h1>C++ Analytics</h1>
 </header>
 <main>
-    <nav class="main-nav">
+    <aside class="main-menu">
+        <nav>
         <h3>Навигация по сайту</h3>
         <ul class="site-navigation">
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/main.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/">Главная</a>
+                <a href="{% url 'main' %}">Главная</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/demand.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/demand">
-                    Востребованность
-                </a>
+                <a href="{% url 'demand' %}">Востребованность</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/geography.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/geography">География</a>
+                <a href="{% url 'geography' %}">География</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/skills.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/skills">Навыки</a>
+                <a href="{% url 'skills' %}">Навыки</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/latest_vacancies.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/latest_vacancies">Последние вакансии</a>
+                <a href="{% url 'latest_vacancies' %}">Последние вакансии</a>
             </li>
         </ul>
     </nav>
+    </aside>
     <section class="hero">
         <h2>C/C++ программист</h2>
     </section>
     <article class="article">
         <div class="article-content">
-            <p>{{ graphic.title }}</p>
+            <table class="demand-table">
+                <caption>Динамика уровня зарплат по годам</caption>
+                <tr>
+                    {% for year in dict.keys %}
+                        <th>{{ year }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for salary in dict.values %}
+                        <td>{{ salary }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
             <img class="demand-img" src="{{ graphic.image.url }}">
         </div>
     </article>

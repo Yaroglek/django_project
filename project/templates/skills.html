@@ -14,33 +14,33 @@
     <h1>C++ Analytics</h1>
 </header>
 <main>
-    <nav class="main-nav">
+    <aside class="main-menu">
+        <nav>
         <h3>Навигация по сайту</h3>
         <ul class="site-navigation">
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/main.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/">Главная</a>
+                <a href="{% url 'main' %}">Главная</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/demand.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/demand">
-                    Востребованность
-                </a>
+                <a href="{% url 'demand' %}">Востребованность</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/geography.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/geography">География</a>
+                <a href="{% url 'geography' %}">География</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/skills.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/skills">Навыки</a>
+                <a href="{% url 'skills' %}">Навыки</a>
             </li>
             <li class="site-navigation-item">
                 <img class="icon" src="{% static 'images/latest_vacancies.svg' %}" width="24" height="24">
-                <a href="http://127.0.0.1:8000/latest_vacancies">Последние вакансии</a>
+                <a href="{% url 'latest_vacancies' %}">Последние вакансии</a>
             </li>
         </ul>
     </nav>
+    </aside>
     <section class="hero">
         <h2>C/C++ программист</h2>
     </section>
