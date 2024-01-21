@@ -1,0 +1,14 @@
+.article-content h4 {
+    padding-left: 20px;
+}
+
+.article-images {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.article-content img {
+    display: block;
+    max-width: 350px;
+}

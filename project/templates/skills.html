@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 {% load static %}
+{% load to_list %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>C/C++</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skills.css' %}">
 </head>
 <body>
 <header class="page-header">
@@ -46,7 +48,29 @@
     </section>
     <article class="article">
         <div class="article-content">
-
+            {% for skills in all_skills %}
+                <h3>{{ skills.title }}</h3>
+                {% for skills_year in skills.skillsyear_set.all %}
+                    <div class="skills-year-content">
+                        <img class="skills-year-img" src="{{ skills_year.graphic.url }}">
+                        <table class="skills-year-table">
+                            <caption>{{ skills_year.title }}</caption>
+                            {% with skills_year.content.values|to_list as values %}
+                                <tr>
+                                    {% for skill in values.0.0 %}
+                                        <th>{{ skill }}</th>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for freq in values.0.1 %}
+                                        <td>{{ freq }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endwith %}
+                        </table>
+                    </div>
+                {% endfor %}
+            {% endfor %}
         </div>
     </article>
 </main>

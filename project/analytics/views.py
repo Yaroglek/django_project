@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from back.api import get_latest_vacancies
+from back.hh_api import get_latest_vacancies
 
 
 def main(request):
@@ -18,7 +18,12 @@ def geography(request):
 
 
 def skills(request):
-    return render(request, "skills.html")
+    all_skills = SkillsContent.objects.all()
+    for skills in all_skills:
+        for skillsyear in skills.skillsyear_set.all():
+            for skill in list(skillsyear.content.values())[0]:
+                print(skill)
+    return render(request, "skills.html", {"all_skills": all_skills})
 
 
 def latest_vacancies(request):

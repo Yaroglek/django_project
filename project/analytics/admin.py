@@ -1,10 +1,5 @@
 from django.contrib import admin
-from .models import Image, DemandContent, GeographyContent, SkillsContent
-
-
-@admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
-    pass
+from .models import *
 
 
 @admin.register(DemandContent)
@@ -19,4 +14,9 @@ class GeographyContentAdmin(admin.ModelAdmin):
 
 @admin.register(SkillsContent)
 class SkillsContentAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(SkillsYear)
+class SkillsYearAdmin(admin.ModelAdmin):
     pass

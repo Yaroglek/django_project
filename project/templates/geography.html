@@ -49,8 +49,9 @@
         <div class="article-content">
             {% for geography in all_geography %}
                 <div class="geography-content">
-                    <img class="geography-img" src="{{ geography.image.image.url }}">
+                    <img class="geography-img" src="{{ geography.graphic.url }}">
                     <table class="geography-table">
+                        <caption>{{ geography.title }}</caption>
                         <tr>
                             {% for key in geography.content.keys %}
                                 <th>{{ key }}</th>

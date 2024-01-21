@@ -49,8 +49,9 @@
         <div class="article-content">
             {% for demand in all_demands %}
                 <div class="demand-content">
-                    <img class="demand-img" src="{{ demand.image.image.url }}">
+                    <img class="demand-img" src="{{ demand.graphic.url }}">
                     <table class="demand-table">
+                        <caption>{{ demand.title }}</caption>
                         <tr>
                             {% for key in demand.content.keys %}
                                 <th>{{ key }}</th>

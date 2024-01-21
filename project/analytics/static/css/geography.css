@@ -15,12 +15,14 @@ caption {
 }
 
 .geography-table th {
+    font-size: 14px;
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
 .geography-table td {
+    font-size: 14px;
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
