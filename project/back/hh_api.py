@@ -25,7 +25,7 @@ def get_latest_vacancies():
                 answer = json.loads(response.text)
                 fields_needed = {
                     "name": answer["name"],
-                    "description": re.sub("<.*?>", "", answer["description"]),
+                    "description": re.sub("<.*?>", "", answer["description"])[:500] + "...",
                     "key_skills": get_skills_from_vac([i["name"] for i in answer["key_skills"]]),
                     "company": answer["employer"]["name"],
                     "salary": get_salary_from_hh_vacancy(answer["salary"], answer["published_at"]),

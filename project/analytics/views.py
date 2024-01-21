@@ -19,10 +19,6 @@ def geography(request):
 
 def skills(request):
     all_skills = SkillsContent.objects.all()
-    for skills in all_skills:
-        for skillsyear in skills.skillsyear_set.all():
-            for skill in list(skillsyear.content.values())[0]:
-                print(skill)
     return render(request, "skills.html", {"all_skills": all_skills})
 
 

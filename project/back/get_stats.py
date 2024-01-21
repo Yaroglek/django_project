@@ -102,17 +102,17 @@ def get_skills_page_content(df: pd.DataFrame):
     print(skills_frequency_by_year)
 
 
-# # Подготовка данных из файла для аналитики. Запись обработанного файла в новый, чтобы больше не обращаться к API ЦБ
-# file_name = "vacancies.csv"
-# data = pd.read_csv(file_name)
-# data = prepare_df(data)
-# data.to_csv("vacancies_with_salary.csv", index=False, encoding='utf-8')
+# Подготовка данных из файла для аналитики. Запись обработанного файла в новый, чтобы больше не обращаться к API ЦБ
+file_name = "vacancies.csv"
+data = pd.read_csv(file_name)
+data = prepare_df(data)
+data.to_csv("vacancies_with_salary.csv", index=False, encoding='utf-8')
 
 # Результаты в results.txt
 file_name = "vacancies_with_salary.csv"
 profession_name = r"c\+\+|с\+\+"
 data = pd.read_csv(file_name)
 
-# get_demand_page_content(data)
-# get_geography_page_content(data)
+get_demand_page_content(data)
+get_geography_page_content(data)
 get_skills_page_content(data)
