@@ -1,4 +1,3 @@
-import locale
 import requests
 import dateutil.parser
 import xml.etree.ElementTree as ET
@@ -25,20 +24,20 @@ def get_currency_in_rur(currency: str, published_at: str):
     if year not in currencies_by_date:
         currencies_by_date[year] = {
             month: {
-                currency: get_multiplier(currency, month, year)
+                currency: get_currency_from_cb(currency, month, year)
             }
         }
     if month not in currencies_by_date[year]:
         currencies_by_date[year][month] = {
-            currency: get_multiplier(currency, month, year)
+            currency: get_currency_from_cb(currency, month, year)
         }
     if currency not in currencies_by_date[year][month]:
-        currencies_by_date[year][month][currency] = get_multiplier(currency, month, year)
+        currencies_by_date[year][month][currency] = get_currency_from_cb(currency, month, year)
 
     return currencies_by_date[year][month][currency]
 
 
-def get_multiplier(currency: str, month: int, year: int):
+def get_currency_from_cb(currency: str, month: int, year: int):
     print(currency, month, year)
     month = "0" + str(month) if month < 10 else month
     date = f"01/{month}/{year}"
@@ -50,9 +49,10 @@ def get_multiplier(currency: str, month: int, year: int):
         valute = root.find(f".//Valute[CharCode='{currency}']")
 
         if valute is not None:
-            locale.setlocale(locale.LC_NUMERIC, 'ru_RU.UTF-8')
-            multiplier = locale.atof(valute.find('VunitRate').text)
+            multiplier = float(valute.find('VunitRate').text.replace(",", "."))
             return multiplier
 
 
 currencies_by_date = {}
+
+

@@ -1,7 +1,9 @@
 .article-images {
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .article-content img {
