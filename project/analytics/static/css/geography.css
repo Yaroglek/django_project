@@ -33,3 +33,23 @@ caption {
     border: 2px solid #587BEC;
     border-radius: 15px;
 }
+
+.geography-img {
+    margin-top: 20px;
+    border-radius: 2%;
+    margin-top: 20px;
+}
+
+.dark-theme .geography-img {
+    filter: invert(90%) sepia(0%) saturate(7500%) hue-rotate(206deg) brightness(112%) contrast(101%);
+}
+
+.dark-theme th,
+.dark-theme td,
+.dark-theme table {
+    border: 1px solid #303030;
+}
+
+.dark-theme th {
+    background: #222222;
+}

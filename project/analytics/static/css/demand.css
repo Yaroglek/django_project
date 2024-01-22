@@ -20,14 +20,35 @@ caption {
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
+
 .demand-table td {
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
 
 .demand-content {
-    padding: 0px 15px 20px 15px;
+    padding: 20px 15px 20px 15px;
     margin-bottom: 20px;
     border: 2px solid #587BEC;
     border-radius: 15px;
+}
+
+.demand-img {
+    margin-top: 20px;
+    border-radius: 2%;
+    margin-top: 20px;
+}
+
+.dark-theme .demand-img {
+    filter: invert(90%) sepia(0%) saturate(7500%) hue-rotate(206deg) brightness(112%) contrast(101%);
+}
+
+.dark-theme th,
+.dark-theme td,
+.dark-theme table {
+    border: 1px solid #303030;
+}
+
+.dark-theme th {
+    background: #222222;
 }

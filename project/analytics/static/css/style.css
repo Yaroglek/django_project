@@ -20,7 +20,15 @@ header {
 }
 
 header h1 {
-    margin-left: 50px;
+    margin-left: 2%;
+}
+
+.theme-button {
+    margin-top: 4%;
+    margin-left: 72%;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #6385F1;
+    border-radius: 10px;
 }
 
 main {
@@ -46,7 +54,6 @@ aside h3 {
 }
 
 .site-navigation-item {
-    color: #000;
     padding: 16px;
     text-decoration: none;
     text-align: left;
@@ -80,8 +87,69 @@ aside h3 {
 }
 
 footer {
-    background-color: #f2f2f2;
+    background-color: #e7e7e7;
     padding: 10px 20px;
     text-align: center;
     height: 100%;
 }
+
+.light-theme {
+    color: #333333;
+}
+
+.dark-theme {
+    color: #f2f2f2;
+    background-color: #10121A;
+}
+
+.light-theme .theme-button {
+    color: #214BB2;
+    border: 2px solid #214BB2;
+    background-color: #ffffff;
+}
+
+.light-theme .theme-button:hover {
+    color: #ffffff;
+    background-color: #214BB2;
+}
+
+.dark-theme .theme-button {
+    color: #ffffff;
+    border: 2px solid #214BB2;
+    background-color: #214BB2;
+}
+
+.dark-theme .theme-button:hover {
+    color: #ffffff;
+    background-color: #4F76D6;
+    border: 2px solid #4F76D6;
+}
+
+.dark-theme .site-navigation-item a{
+    color: #ffffff;
+}
+
+.dark-theme .site-navigation-item a:hover{
+    color: #ffffff;
+    color: #4F76D6;
+    text-decoration: underline #4F76D6;
+}
+
+.dark-theme header {
+    border-bottom: solid #4F76D6;
+}
+
+.dark-theme .article {
+    border-bottom: solid #4F76D6;
+}
+
+.dark-theme footer {
+    background-color: #383C52;
+}
+
+.dark-theme .icon{
+    filter: invert(44%) sepia(66%) saturate(1125%) hue-rotate(201deg) brightness(87%) contrast(92%);
+}
+
+
+
