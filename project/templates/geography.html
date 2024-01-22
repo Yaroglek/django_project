@@ -6,6 +6,8 @@
     <title>C/C++</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/geography.css' %}">
+    <link type="image/png" sizes="16x16" rel="icon" href="{% static 'images/favicon-16x16.png' %}">
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/favicon-32x32.png' %}">
 </head>
 <body class="page light-theme">
     <header class="page-header">
@@ -44,7 +46,7 @@
         </nav>
         </aside>
         <section class="hero">
-            <h2>Описание профессии</h2>
+            <h2>География</h2>
         </section>
         <article class="article">
             <div class="article-content">
@@ -72,6 +74,31 @@
     <footer>
         <h4>Кремлев Андрей Викторович, РИ-220931</h4>
     </footer>
-    <script src="{% static 'js/script.js' %}"></script>
+    <script type="module">
+        var togButton = document.getElementById("togButton");
+
+        darkOn = localStorage.getItem("dark") == "true" ? true : false;
+        setTheme();
+
+        function setTheme(){
+            localStorage.setItem("dark", darkOn ? "true" : "false");
+            if(darkOn){
+                document.body.classList.remove("light-theme");
+                document.body.classList.add("dark-theme");
+            }
+            else{
+                document.body.classList.remove("dark-theme");
+                document.body.classList.add("light-theme");
+            }
+        }
+
+        var darkOn = false;
+        function toggle(){
+            darkOn = !darkOn;
+            setTheme();
+        }
+
+        togButton.addEventListener("click", toggle);
+    </script>
 </body>
 </html>
