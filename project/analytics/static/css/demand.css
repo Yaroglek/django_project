@@ -1,4 +1,4 @@
-.article-content {
+.demand-article-content {
     float: center;
     text-align: center;
 }
@@ -15,6 +15,7 @@ caption {
 }
 
 .demand-table th {
+    font-size: 10px;
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
@@ -22,6 +23,7 @@ caption {
 }
 
 .demand-table td {
+    font-size: 10px;
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
@@ -34,7 +36,6 @@ caption {
 }
 
 .demand-img {
-    margin-top: 20px;
     border-radius: 2%;
     margin-top: 20px;
 }

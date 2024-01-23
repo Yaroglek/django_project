@@ -1,4 +1,4 @@
-.article-images {
+.main-article-images {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(3, 1fr);
@@ -6,7 +6,7 @@
     margin-bottom: 20px;
 }
 
-.article-content img {
+.main-article-content img {
     display: block;
     max-width: 350px;
 }

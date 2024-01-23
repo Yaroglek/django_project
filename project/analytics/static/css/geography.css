@@ -1,4 +1,4 @@
-.article-content {
+.geography-article-content {
     float: center;
     text-align: center;
 }
@@ -15,27 +15,26 @@ caption {
 }
 
 .geography-table th {
-    font-size: 14px;
+    font-size: 10px;
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
 .geography-table td {
-    font-size: 14px;
+    font-size: 10px;
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
 
 .geography-content {
-    padding: 0px 15px 20px 15px;
+    padding: 20px 15px 20px 15px;
     margin-bottom: 20px;
     border: 2px solid #587BEC;
     border-radius: 15px;
 }
 
 .geography-img {
-    margin-top: 20px;
     border-radius: 2%;
     margin-top: 20px;
 }

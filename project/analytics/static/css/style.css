@@ -81,7 +81,8 @@ aside h3 {
     margin-left: 250px;
 }
 
-.article {
+article {
+    float: center;
     margin-left: 250px;
     border-bottom: solid #214BB2;
 }

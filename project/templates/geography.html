@@ -1,55 +1,12 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>C/C++</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/geography.css' %}">
-    <link type="image/png" sizes="16x16" rel="icon" href="{% static 'images/favicon-16x16.png' %}">
-    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'images/favicon-32x32.png' %}">
-</head>
-<body class="page light-theme">
-    <header class="page-header">
-        <p class="logo">
-            <img src="{% static 'images/logo.svg' %}">
-        </p>
-        <h1>C++ Analytics</h1>
-        <button class="theme-button" type="button">Изменить тему</button>
-    </header>
-    <main>
-        <aside class="main-menu">
-            <nav>
-            <h3>Навигация по сайту</h3>
-            <ul class="site-navigation">
-                <li class="site-navigation-item">
-                    <img class="icon" src="{% static 'images/main.svg' %}" width="24" height="24">
-                    <a href="{% url 'main' %}">Главная</a>
-                </li>
-                <li class="site-navigation-item">
-                    <img class="icon" src="{% static 'images/demand.svg' %}" width="24" height="24">
-                    <a href="{% url 'demand' %}">Востребованность</a>
-                </li>
-                <li class="site-navigation-item">
-                    <img class="icon" src="{% static 'images/geography.svg' %}" width="24" height="24">
-                    <a href="{% url 'geography' %}">География</a>
-                </li>
-                <li class="site-navigation-item">
-                    <img class="icon" src="{% static 'images/skills.svg' %}" width="24" height="24">
-                    <a href="{% url 'skills' %}">Навыки</a>
-                </li>
-                <li class="site-navigation-item">
-                    <img class="icon" src="{% static 'images/latest_vacancies.svg' %}" width="24" height="24">
-                    <a href="{% url 'latest_vacancies' %}">Последние вакансии</a>
-                </li>
-            </ul>
-        </nav>
-        </aside>
-        <section class="hero">
-            <h2>География</h2>
-        </section>
-        <article class="article">
-            <div class="article-content">
+
+{% block content %}
+    <section class="hero">
+        <h2>География</h2>
+    </section>
+    <article class="geography-article">
+        <div class="geography-article-content">
             {% for geography in all_geography %}
                 <div class="geography-content">
                     <img class="geography-img" src="{{ geography.graphic.url }}">
@@ -69,36 +26,5 @@
                 </div>
             {% endfor %}
         </div>
-        </article>
-    </main>
-    <footer>
-        <h4>Кремлев Андрей Викторович, РИ-220931</h4>
-    </footer>
-    <script type="module">
-        var togButton = document.getElementById("togButton");
-
-        darkOn = localStorage.getItem("dark") == "true" ? true : false;
-        setTheme();
-
-        function setTheme(){
-            localStorage.setItem("dark", darkOn ? "true" : "false");
-            if(darkOn){
-                document.body.classList.remove("light-theme");
-                document.body.classList.add("dark-theme");
-            }
-            else{
-                document.body.classList.remove("dark-theme");
-                document.body.classList.add("light-theme");
-            }
-        }
-
-        var darkOn = false;
-        function toggle(){
-            darkOn = !darkOn;
-            setTheme();
-        }
-
-        togButton.addEventListener("click", toggle);
-    </script>
-</body>
-</html>
+    </article>
+{% endblock %}
