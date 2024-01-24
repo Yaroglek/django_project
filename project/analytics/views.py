@@ -1,6 +1,8 @@
+import asyncio
+
 from django.shortcuts import render
 from .models import *
-from back.hh_api import get_latest_vacancies
+from back.hh_api import get_latest_vacancies_async
 
 
 def main(request):
@@ -23,4 +25,4 @@ def skills(request):
 
 
 def latest_vacancies(request):
-    return render(request, "latest_vacancies.html", {"vacancies": get_latest_vacancies()})
+    return render(request, "latest_vacancies.html", {"vacancies": asyncio.run(get_latest_vacancies_async())})

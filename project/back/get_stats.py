@@ -31,7 +31,7 @@ def get_demand_page_content(df: pd.DataFrame):
 
     # Доля вакансий по годам для выбранной профессии
     prof_vacancies_dynamics = data_prof["published_year"].value_counts().sort_index().astype(int).to_dict()
-    print(f"Доля вакансий по годам для выбранной профессии {prof_vacancies_dynamics}")
+    print(f"Динамика вакансий по годам для выбранной профессии {prof_vacancies_dynamics}")
 
 
 def get_geography_page_content(df: pd.DataFrame):
@@ -83,7 +83,7 @@ def get_skills_page_content(df: pd.DataFrame):
     skills_frequency_by_year = top_skills.groupby("published_year").apply(
         lambda x: (x["key_skills"].to_list(), x["frequency"].to_list())).to_dict()
 
-    print(f"ТОП-20 навыков погодам: {skills_frequency_by_year}")
+    print(f"ТОП-20 навыков по годам: {skills_frequency_by_year}")
 
 
 def get_top_cities_by_vacancies(cities: dict) -> dict:
@@ -100,19 +100,20 @@ def get_top_cities_by_salary(cities: dict) -> dict:
     return top_cities
 
 
-# # Подготовка данных из файла для аналитики. Запись обработанного файла в новый, чтобы больше не обращаться к API ЦБ
-# file_name = "vacancies.csv"
-# data = pd.read_csv(file_name)
-# data = prepare_df(data)
-# data.to_csv("vacancies_with_salary.csv", index=False, encoding='utf-8')
+# Подготовка данных из файла для аналитики. Запись обработанного файла в новый, чтобы больше не обращаться к API ЦБ
+file_name = "vacancies.csv"
+data = pd.read_csv(file_name)
+data = prepare_df(data)
+data.to_csv("vacancies_with_salary.csv", index=False, encoding='utf-8')
 
 
 file_name = "vacancies_with_salary.csv"
-# Вводить regex все возможные названия через |
+# Вводить через regex все возможные названия через |
 profession_name = r"c\+\+|с\+\+"
 data = pd.read_csv(file_name)
 
 get_demand_page_content(data.copy())
 get_geography_page_content(data.copy())
 get_skills_page_content(data.copy())
-get_skills_page_content(data[data['name'].str.contains(profession_name, case=False, na=False)].copy()) # Навыки для выбранной профессии
+# Еще 1 раз вызываю эту функцию для скиллов для получения навыков для выбранной профессии
+get_skills_page_content(data[data['name'].str.contains(profession_name, case=False, na=False)].copy())
